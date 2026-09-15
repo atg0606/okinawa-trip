@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#eef8fb">
+<title>Okinawa 2026 · Baby First Trip</title>
+<style>
+:root{
+  --bg:#f6fbfd;--card:#fff;--ink:#183247;--muted:#738595;--line:#dfebf1;
+  --ocean:#dff5fb;--mint:#e8f7ee;--sand:#fff5df;--peach:#fff0e8;--lav:#f0efff;
+  --blue:#2a7299;--green:#2c7b62;--shadow:0 10px 30px rgba(31,73,96,.09);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;background:linear-gradient(#eef9fc,#f9fcfd 420px);color:var(--ink);line-height:1.6}
+.wrap{max-width:880px;margin:auto;padding:14px 14px 50px}
+.hero{padding:28px 22px;border-radius:30px;background:linear-gradient(135deg,#dff7ff,#fff9ed);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"🌴";position:absolute;right:12px;bottom:-24px;font-size:94px;opacity:.12}
+.kicker{font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--blue)}
+h1{font-size:32px;line-height:1.15;margin:8px 0 6px;letter-spacing:-.03em}
+.hero p{margin:0;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.chip{font-size:12px;font-weight:800;padding:7px 10px;border:1px solid #dbe8ef;background:#fff;border-radius:999px}
+section{margin-top:22px}
+h2{font-size:20px;margin:0 0 12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:23px;padding:17px;box-shadow:var(--shadow)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.fact{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px}
+.fact b{font-size:13px;display:block}.fact span{font-size:13px;color:var(--muted)}
+.day{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:13px}
+.head{display:flex;justify-content:space-between;gap:10px;padding:15px 17px}
+.day:nth-child(1) .head{background:var(--ocean)}
+.day:nth-child(2) .head{background:var(--mint)}
+.day:nth-child(3) .head{background:var(--sand)}
+.day:nth-child(4) .head{background:var(--peach)}
+.day:nth-child(5) .head{background:var(--lav)}
+.num{font-size:11px;font-weight:900;letter-spacing:.08em}.title{font-size:18px;font-weight:900}.date{font-size:12px;color:var(--muted)}
+.route{padding:13px 17px 16px}
+.stop{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed #e6edf1}
+.stop:last-child{border-bottom:none}
+.ico{width:34px;height:34px;border-radius:12px;background:#f5f8fa;display:grid;place-items:center}
+.stop b{display:block;font-size:14px}.stop small{display:block;color:var(--muted);font-size:12px;margin-top:1px}
+.badge{display:inline-block;margin-top:6px;font-size:11px;font-weight:800;padding:4px 8px;border-radius:999px;background:#eff7f3;color:var(--green)}
+.nav{display:flex;flex-wrap:wrap;gap:7px;margin-top:7px}
+.nav a{font-size:11px;text-decoration:none;color:#1e668c;background:#edf8fd;border:1px solid #cfe5ef;border-radius:10px;padding:6px 8px;font-weight:800}
+.food{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.foodcard{border:1px solid var(--line);border-radius:19px;padding:14px;background:#fff}
+.foodcard .when{font-size:11px;color:var(--muted);font-weight:800}
+.foodcard h3{font-size:15px;margin:4px 0}
+.foodcard p{font-size:12px;color:#65798a;margin:0}
+.foodcard .why{margin-top:8px;padding:8px 9px;background:#f7fafb;border-radius:11px;font-size:11px}
+.tip{padding:13px 14px;border-radius:16px;background:#fffaf0;border:1px solid #f1e4c5;font-size:13px;color:#695a33;margin-bottom:9px}
+.planB{padding:12px 14px;border-radius:16px;background:#f3f8fb;border:1px solid #dbeaf0;font-size:12px;margin-top:9px}
+footer{text-align:center;color:#91a0ab;font-size:11px;margin-top:25px}
+@media(max-width:650px){.grid,.food{grid-template-columns:1fr}.wrap{padding:10px 11px 40px}.hero{padding:24px 18px}h1{font-size:29px}}
+
+.quick-nav{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.quick-nav a{padding:10px 16px;border-radius:14px;background:#fff;border:1px solid var(--line);color:var(--blue);text-decoration:none;font-weight:700}
+section{scroll-margin-top:16px}
+.packing-item{display:flex;align-items:flex-start;gap:10px;padding:7px 0;cursor:pointer}
+.packing-item input{width:20px;height:20px;flex-shrink:0;margin-top:2px;accent-color:var(--green)}
+.packing-item:has(input:checked){color:var(--muted);text-decoration:line-through}
+.travel-field{display:block;margin:12px 0;font-size:13px;font-weight:700}
+.travel-field input{display:block;width:100%;margin-top:5px;padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit;background:white;color:var(--ink)}
+input:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.save-note{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<header class="hero">
+  <div class="kicker">BABY FIRST · OKINAWA FAMILY TRIP</div>
+  <h1>오키나와 4박 5일 🌺</h1>
+  <p>2026.10.09 (금) — 10.13 (화)<br>아기 컨디션을 가장 먼저 보는, 하루 1~2개 일정 여행</p>
+  <div class="chips">
+    <span class="chip">🏨 세소코 2박 → 차탄 2박</span>
+    <span class="chip">🚗 오달렌터카</span>
+    <span class="chip">🐠 츄라우미</span>
+    <span class="chip">🛍️ 라이카무</span>
+    <span class="chip">😴 낮잠·휴식 우선</span>
+  </div>
+</header>
+<nav class="quick-nav" aria-label="페이지 바로가기">
+<a href="#schedule">🗓️ 일정</a><a href="#food">🍽️ 식당</a><a href="#packing">🧳 준비물</a><a href="#travel-details">🚗 이동 정보</a>
+</nav>
+
+<section>
+<h2>✈️ 예약 한눈에</h2>
+<div class="grid">
+  <div class="fact"><b>가는 편</b><span>10/9 09:20 인천 → 11:50 오키나와</span></div>
+  <div class="fact"><b>오는 편</b><span>10/13 12:50 오키나와 → 15:10 인천</span></div>
+  <div class="fact"><b>렌터카</b><span>10/9 13:00 대여 → 10/13 10:00 반납<br>W2 7인승 · 프리미엄 NOC</span></div>
+  <div class="fact"><b>숙소</b><span>10/9~11 힐튼 오키나와 세소코<br>10/11~13 차탄 숙소<br>8-4 Minato, Chatan, Nakagami District, Okinawa 904-0114, 일본</span></div>
+</div>
+</section>
+
+<section id="schedule">
+<h2>🗓️ 아기 중심 일정</h2>
+
+<article class="day">
+<div class="head"><div><div class="num">DAY 1</div><div class="title">도착 → 세소코</div></div><div class="date">10/9 금</div></div>
+<div class="route">
+  <div class="stop"><div class="ico">✈️</div><div><b>11:50 나하공항 도착</b><small>입국 · 수하물 · 화장실까지 여유 있게</small></div></div>
+  <div class="stop"><div class="ico">🚗</div><div><b>13:00 오달렌터카 픽업</b><small>차 타기 전 물·간식 먼저 챙기기</small></div></div>
+  <div class="stop"><div class="ico">🍙</div><div><b>공항 주변에서 간단 점심 → 북부 이동</b><small>첫날은 맛집 웨이팅 금지. 편의점 주먹밥·빵도 플랜 B.</small><span class="badge">차에서 낮잠 유도하기 좋은 구간</span></div></div>
+  <div class="stop"><div class="ico">🏨</div><div><b>힐튼 세소코 체크인</b><small>도착 후 다른 관광 X · 수영/바다/객실 휴식</small>
+    <div class="nav"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hilton+Okinawa+Sesoko+Resort">지도</a></div>
+  </div></div>
+</div>
+</article>
+
+<article class="day">
+<div class="head"><div><div class="num">DAY 2</div><div class="title">츄라우미 오전 → 오후 휴식</div></div><div class="date">10/10 토</div></div>
+<div class="route">
+  <div class="stop"><div class="ico">🐠</div><div><b>오전 츄라우미 수족관</b><small>개장 시간대에 맞춰 일찍 가면 아기 체력 소모를 줄이기 좋음</small><span class="badge">이날의 유일한 필수 관광</span>
+    <div class="nav"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Okinawa+Churaumi+Aquarium">지도</a></div>
+  </div></div>
+  <div class="stop"><div class="ico">🍜</div><div><b>점심: 수족관 근처에서 해결</b><small>1순위 Cocco Shokudo / 귀찮으면 수족관 Inoh 레스토랑</small></div></div>
+  <div class="stop"><div class="ico">😴</div><div><b>세소코 복귀 → 낮잠</b><small>오후 일정은 비워두기</small></div></div>
+  <div class="stop"><div class="ico">🏖️</div><div><b>컨디션 좋으면 수영 또는 비치</b><small>안 좋으면 객실 휴식만 해도 일정 성공</small></div></div>
+</div>
+</article>
+
+<article class="day">
+<div class="head"><div><div class="num">DAY 3</div><div class="title">세소코 → 반타카페 → 차탄</div></div><div class="date">10/11 일</div></div>
+<div class="route">
+  <div class="stop"><div class="ico">☀️</div><div><b>오전 리조트 마지막 시간</b><small>아침 산책·수영 후 체크아웃</small></div></div>
+  <div class="stop"><div class="ico">🚙</div><div><b>세소코에서 요미탄 방향으로 남하</b><small>이동 중 아기 낮잠이 들면 카페 도착 시간을 늦춰도 됨</small></div></div>
+  <div class="stop"><div class="ico">☕</div><div><b>반타카페</b><small>우미카지테라스 대신 동선 안 깨는 오션뷰 카페</small>
+    <div class="nav"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=BANTA+CAFE+Okinawa">지도</a></div>
+  </div></div>
+  <div class="stop"><div class="ico">🏠</div><div><b>15:00 이후 차탄 체크인</b><small>짐 풀고 최소 1시간 쉬기</small></div></div>
+  <div class="stop"><div class="ico">🌇</div><div><b>저녁: THE CALIF KITCHEN → 아메리칸빌리지 산책</b><small>키즈 공간·키즈 메뉴·기저귀 교환·수유 공간이 있어 이날 저녁 1순위</small><span class="badge">아기 친화 식당 최우선 추천</span>
+    <div class="nav"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=THE+CALIF+KITCHEN+Okinawa">식당 지도</a><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=American+Village+Okinawa">아메리칸빌리지</a></div>
+  </div></div>
+</div>
+</article>
+
+<article class="day">
+<div class="head"><div><div class="num">DAY 4 · CHOOSE</div><div class="title">오늘 아기 컨디션 보고 선택!</div></div><div class="date">10/12 월</div></div>
+<div class="route">
+  <div class="planB" style="margin-bottom:12px"><b>아침에 결정하면 돼요 👶</b><br>
+  잘 자고 컨디션 좋음 → <b>A 유하 체험 DAY</b><br>
+  피곤하거나 늦잠/낮잠이 꼬임 → <b>B 느긋한 DAY</b></div>
+
+  <div style="border:1px solid #d7eadf;background:#f3fbf6;border-radius:18px;padding:14px;margin-bottom:12px">
+    <b style="font-size:16px">🚂 A안 · 유하 체험 DAY</b>
+    <small style="display:block;color:#738595;margin:3px 0 9px">동물 + 기차/자동차 같은 탈것을 좋아하는 날의 기본 추천</small>
+    <div class="stop"><div class="ico">🐘</div><div><b>오전 · 오키나와 어린이나라</b><small>동물 구경 + 미니기차/미니카 등 탈것 체험. 다 하려고 하지 말고 유하가 좋아하는 것 위주로.</small>
+      <div class="nav"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Okinawa+Zoo+Museum">지도</a></div>
+    </div></div>
+    <div class="stop"><div class="ico">🍚</div><div><b>점심 · 어린이나라 또는 라이카무 이동 후 식사</b><small>웨이팅보다 아기가 바로 먹을 수 있는 메뉴 우선</small></div></div>
+    <div class="stop"><div class="ico">🛍️</div><div><b>오후 · 이온몰 오키나와 라이카무</b><small>쇼핑은 짧게. 아기가 피곤하면 바로 차탄 복귀.</small>
+      <div class="nav"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=AEON+MALL+Okinawa+Rycom">지도</a></div>
+    </div></div>
+    <div class="stop"><div class="ico">😴</div><div><b>차탄 복귀 · 낮잠/휴식</b><small>저녁 일정은 컨디션 보고 결정</small></div></div>
+  </div>
+
+  <div style="border:1px solid #e4e1f2;background:#faf9ff;border-radius:18px;padding:14px">
+    <b style="font-size:16px">😴 B안 · 느긋한 DAY</b>
+    <small style="display:block;color:#738595;margin:3px 0 9px">여행 후반 피로가 보이면 관광 하나 과감하게 빼는 플랜</small>
+    <div class="stop"><div class="ico">🥐</div><div><b>차탄에서 느긋한 아침</b><small>늦잠도 일정의 일부. 서두르지 않기.</small></div></div>
+    <div class="stop"><div class="ico">🛍️</div><div><b>이온몰 오키나와 라이카무</b><small>쇼핑 + 점심 + 수유/기저귀 동선을 한 곳에서 해결</small>
+      <div class="nav"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=AEON+MALL+Okinawa+Rycom">지도</a></div>
+    </div></div>
+    <div class="stop"><div class="ico">😴</div><div><b>차탄 복귀 · 낮잠/객실 휴식</b><small>오후 일정 없이 쉬어도 OK</small></div></div>
+    <div class="stop"><div class="ico">🌇</div><div><b>컨디션 좋으면 아메리칸빌리지</b><small>해질 무렵 산책 + 저녁. 힘들면 숙소 근처 식사로 종료.</small>
+      <div class="nav"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=American+Village+Okinawa">지도</a></div>
+    </div></div>
+  </div>
+
+  <div class="planB"><b>🍱 두 안 공통 저녁 백업</b><br>오오토야 차탄처럼 밥·생선·우동·키즈메뉴가 있는 가정식 식당을 우선. 아기가 피곤하면 포장/마트 음식으로 숙소에서 먹어도 됨.</div>
+</div>
+</article>
+
+<article class="day">
+<div class="head"><div><div class="num">DAY 5</div><div class="title">바로 공항</div></div><div class="date">10/13 화</div></div>
+<div class="route">
+  <div class="stop"><div class="ico">🧳</div><div><b>아침 식사 → 체크아웃</b><small>짐은 전날 밤 최대한 정리</small></div></div>
+  <div class="stop"><div class="ico">🚗</div><div><b>10:00 오달렌터카 나하공항점 반납</b><small>공항 셔틀 이동</small></div></div>
+  <div class="stop"><div class="ico">✈️</div><div><b>12:50 오키나와 출발</b><small>마지막 날 우미카지·쇼핑 일정은 넣지 않음</small></div></div>
+</div>
+</article>
+</section>
+
+<section id="food">
+<h2>🍽️ 아기랑 먹기 쉬운 식당 후보</h2>
+<div class="food">
+
+  <div class="foodcard">
+    <div class="when">DAY 2 · 츄라우미</div>
+    <h3>🍜 Cocco Shokudo</h3>
+    <p>츄라우미 근처 오키나와 소바·닭밥 계열. 아기 동반 환영, 키즈 공간·장난감·그림책·어린이 의자 정보가 확인됨.</p>
+    <div class="why">추천 이유: 수족관 후 멀리 이동하지 않고 식사 가능.</div>
+    <div class="nav"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Cocco+Shokudo+Churaumi">지도</a></div>
+  </div>
+
+  <div class="foodcard">
+    <div class="when">DAY 2 · 초간단 플랜 B</div>
+    <h3>🌊 Inoh Restaurant</h3>
+    <p>수족관 내부 오션뷰 런치 뷔페. 아이가 먹을 것을 현장에서 골라야 할 때 이동 없이 해결하기 좋음.</p>
+    <div class="why">추천 이유: 식당 찾아 다시 차 타는 과정을 생략.</div>
+  </div>
+
+  <div class="foodcard">
+    <div class="when">DAY 3 · 차탄 저녁 1순위</div>
+    <h3>👶 THE CALIF KITCHEN</h3>
+    <p>키즈 스페이스, 키즈체어, 수유실, 기저귀 교환대, 키즈메뉴가 공식 안내에 명시된 곳.</p>
+    <div class="why">추천 이유: 이번 일정에서 가장 확실한 ‘아기 친화’ 식당.</div>
+    <div class="nav"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=THE+CALIF+KITCHEN+Okinawa">지도</a></div>
+  </div>
+
+  <div class="foodcard">
+    <div class="when">DAY 4 · 차탄 백업</div>
+    <h3>🍱 OOTOYA 차탄</h3>
+    <p>밥·생선·우동·키즈 메뉴 같은 일본 가정식 선택이 쉬워 여행 후반 아기 식사 백업으로 편함.</p>
+    <div class="why">추천 이유: 새로운 음식 거부해도 메뉴를 나눠 먹기 쉬움.</div>
+    <div class="nav"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=OOTOYA+Chatan+Okinawa">지도</a></div>
+  </div>
+
+  <div class="foodcard">
+    <div class="when">DAY 4 · 라이카무</div>
+    <h3>🍙 라이카무 푸드코트</h3>
+    <p>한 곳에서 여러 메뉴를 고를 수 있어 가족 취향이 갈릴 때 가장 편함. 수유실·키즈층도 함께 이용 가능.</p>
+    <div class="why">추천 이유: 아기가 그날 먹겠다는 음식 기준으로 즉석 선택 가능.</div>
+  </div>
+
+  <div class="foodcard">
+    <div class="when">언제든 실패 대비</div>
+    <h3>🏪 편의점 / 마트 플랜</h3>
+    <p>흰밥·주먹밥·식빵·바나나·요거트·우유 같은 익숙한 음식은 숙소 냉장고에 미리 확보.</p>
+    <div class="why">추천 이유: ‘식당에서 꼭 먹여야 한다’는 압박 없애기.</div>
+  </div>
+
+</div>
+</section>
+
+<section>
+<h2>👶 아기 우선 운영 원칙</h2>
+<div class="card">
+  <div class="tip"><b>① 하루 필수 일정은 1개만.</b><br>츄라우미나 라이카무를 했으면 그날 관광은 이미 성공한 것으로 보기.</div>
+  <div class="tip"><b>② 낮잠은 차 이동 또는 숙소 복귀로 확보.</b><br>낮잠 시간에 맞춰 카페·쇼핑 시간을 고정하지 않기.</div>
+  <div class="tip"><b>③ 식당 웨이팅 20분 이상이면 바로 플랜 B.</b><br>아기 여행에서는 유명 맛집보다 ‘지금 바로 앉을 수 있는 곳’이 더 좋은 식당.</div>
+  <div class="tip"><b>④ 익숙한 음식 비상팩 유지.</b><br>흰밥·빵·바나나·요거트·우유처럼 실패 확률 낮은 음식은 항상 차/숙소에 준비.</div>
+  <div class="planB"><b>☔ 비가 오면</b><br>세소코 수영 → 객실 휴식 / 츄라우미 일정 유지 / 차탄에서는 라이카무 비중을 늘리는 식으로 조정. 비 때문에 새 관광지를 추가하지 않기.</div>
+</div>
+</section>
+
+<section>
+<h2>🧭 동선 요약</h2>
+<div class="card">
+  <b>10/9</b> 나하공항 → 세소코<br>
+  <b>10/10</b> 세소코 ↔ 츄라우미<br>
+  <b>10/11</b> 세소코 → 요미탄(반타카페) → 차탄<br>
+  <b>10/12 A안</b> 차탄 → 오키나와 어린이나라 → 라이카무 → 차탄<br>
+  <b>10/12 B안</b> 차탄 → 라이카무 → 차탄/아메리칸빌리지<br>
+  <b>10/13</b> 차탄 → 렌터카 반납 → 나하공항
+  <div class="planB"><b>우미카지테라스는 제외.</b> 남쪽으로 내려갔다 다시 올라오는 동선보다, DAY 3에 반타카페를 넣는 편이 이동 부담이 적음.</div>
+</div>
+</section>
+
+
+<section id="packing">
+<h2>🧳 준비물 체크리스트</h2>
+<div class="card">
+<p id="packing-progress" role="status"></p>
+
+  <div class="tip"><b>👶 유하 필수</b><label class="packing-item"><input type="checkbox" data-save="packing-1"><span>여권</span></label><label class="packing-item"><input type="checkbox" data-save="packing-2"><span>기저귀/물티슈</span></label><label class="packing-item"><input type="checkbox" data-save="packing-3"><span>휴대용 방수패드</span></label><label class="packing-item"><input type="checkbox" data-save="packing-4"><span>갈아입을 옷 2~3벌 여유</span></label><label class="packing-item"><input type="checkbox" data-save="packing-5"><span>얇은 겉옷</span></label><label class="packing-item"><input type="checkbox" data-save="packing-6"><span>모자</span></label><label class="packing-item"><input type="checkbox" data-save="packing-7"><span>아기 선크림</span></label><label class="packing-item"><input type="checkbox" data-save="packing-8"><span>아쿠아슈즈</span></label><label class="packing-item"><input type="checkbox" data-save="packing-9"><span>수영복/래시가드</span></label><label class="packing-item"><input type="checkbox" data-save="packing-10"><span>체온계</span></label><label class="packing-item"><input type="checkbox" data-save="packing-11"><span>평소 먹는 상비약</span></label><label class="packing-item"><input type="checkbox" data-save="packing-12"><span>빨대컵/물병</span></label><label class="packing-item"><input type="checkbox" data-save="packing-13"><span>작은 수저/포크</span></label><label class="packing-item"><input type="checkbox" data-save="packing-14"><span>익숙한 간식</span></label><label class="packing-item"><input type="checkbox" data-save="packing-15"><span>우유/요거트는 현지 구매</span></label></div>
+
+  <div class="tip"><b>🍙 편식 대비 비상식</b><label class="packing-item"><input type="checkbox" data-save="packing-16"><span>떡뻥</span></label><label class="packing-item"><input type="checkbox" data-save="packing-17"><span>김</span></label><label class="packing-item"><input type="checkbox" data-save="packing-18"><span>작은 식빵/크래커류</span></label><label class="packing-item"><input type="checkbox" data-save="packing-19"><span>익숙한 간식 조금. 현지에서는 흰밥, 바나나, 우유, 요거트를 첫날 마트에서 확보해 숙소 냉장고에 넣어두기.</span></label></div>
+
+  <div class="tip"><b>🚗 렌터카용</b><label class="packing-item"><input type="checkbox" data-save="packing-20"><span>국제운전면허증</span></label><label class="packing-item"><input type="checkbox" data-save="packing-21"><span>국내면허증</span></label><label class="packing-item"><input type="checkbox" data-save="packing-22"><span>여권</span></label><label class="packing-item"><input type="checkbox" data-save="packing-23"><span>예약내역</span></label><label class="packing-item"><input type="checkbox" data-save="packing-24"><span>휴대폰 거치대</span></label><label class="packing-item"><input type="checkbox" data-save="packing-25"><span>충전 케이블</span></label><label class="packing-item"><input type="checkbox" data-save="packing-26"><span>차량용 간식봉투</span></label><label class="packing-item"><input type="checkbox" data-save="packing-27"><span>쓰레기봉투</span></label><label class="packing-item"><input type="checkbox" data-save="packing-28"><span>얇은 담요</span></label><label class="packing-item"><input type="checkbox" data-save="packing-29"><span>유하 장난감 2~3개</span></label></div>
+
+  <div class="tip"><b>🏖️ 바다·수영</b><label class="packing-item"><input type="checkbox" data-save="packing-30"><span>수영복</span></label><label class="packing-item"><input type="checkbox" data-save="packing-31"><span>래시가드</span></label><label class="packing-item"><input type="checkbox" data-save="packing-32"><span>방수기저귀</span></label><label class="packing-item"><input type="checkbox" data-save="packing-33"><span>아쿠아슈즈</span></label><label class="packing-item"><input type="checkbox" data-save="packing-34"><span>비치백</span></label><label class="packing-item"><input type="checkbox" data-save="packing-35"><span>작은 방수팩</span></label><label class="packing-item"><input type="checkbox" data-save="packing-36"><span>수건은 숙소 제공 여부 확인. 물놀이 장난감은 부피 큰 건 현지 구매/생략.</span></label></div>
+
+  <div class="tip"><b>🌦️ 10월 오키나와 날씨 대비</b><label class="packing-item"><input type="checkbox" data-save="packing-37"><span>반팔 위주 + 얇은 가디건/바람막이 1개</span></label><label class="packing-item"><input type="checkbox" data-save="packing-38"><span>접이식 우산</span></label><label class="packing-item"><input type="checkbox" data-save="packing-39"><span>작은 우비</span></label><label class="packing-item"><input type="checkbox" data-save="packing-40"><span>모자. 실내 냉방이 강할 수 있어 유하 겉옷은 꼭 가방에.</span></label></div>
+
+  <div class="tip"><b>🩹 아기 상비약</b><label class="packing-item"><input type="checkbox" data-save="packing-41"><span>해열제</span></label><label class="packing-item"><input type="checkbox" data-save="packing-42"><span>체온계</span></label><label class="packing-item"><input type="checkbox" data-save="packing-43"><span>밴드/거즈</span></label><label class="packing-item"><input type="checkbox" data-save="packing-44"><span>소독용품</span></label><label class="packing-item"><input type="checkbox" data-save="packing-45"><span>벌레 물림 연고</span></label><label class="packing-item"><input type="checkbox" data-save="packing-46"><span>모기패치/기피제</span></label><label class="packing-item"><input type="checkbox" data-save="packing-47"><span>평소 처방받아 쓰는 약. 새로운 약보다 평소 사용해본 제품 위주.</span></label></div>
+
+  <div class="tip"><b>✈️ 기내 가방에 따로</b><label class="packing-item"><input type="checkbox" data-save="packing-48"><span>여권</span></label><label class="packing-item"><input type="checkbox" data-save="packing-49"><span>탑승권/예약내역</span></label><label class="packing-item"><input type="checkbox" data-save="packing-50"><span>기저귀 4~5장</span></label><label class="packing-item"><input type="checkbox" data-save="packing-51"><span>물티슈</span></label><label class="packing-item"><input type="checkbox" data-save="packing-52"><span>여벌옷 1세트</span></label><label class="packing-item"><input type="checkbox" data-save="packing-53"><span>간식</span></label><label class="packing-item"><input type="checkbox" data-save="packing-54"><span>물병</span></label><label class="packing-item"><input type="checkbox" data-save="packing-55"><span>작은 장난감/책</span></label><label class="packing-item"><input type="checkbox" data-save="packing-56"><span>비닐봉투</span></label><label class="packing-item"><input type="checkbox" data-save="packing-57"><span>얇은 겉옷</span></label><label class="packing-item"><input type="checkbox" data-save="packing-58"><span>해열제/필수약</span></label></div>
+
+  <div class="planB"><b>짐 줄이는 팁</b><br>
+  기저귀·물·우유·요거트·바나나 같은 소모품은 첫날 현지에서 사는 쪽이 편함. 대신 유하가 꼭 먹는 김·떡뻥처럼 실패하면 곤란한 건 한국에서 소량 가져가기.</div>
+
+</div>
+</section>
+
+<section>
+<h2>🔎 출발 전 마지막 체크</h2>
+<div class="card">
+  <div class="stop"><div class="ico">🪑</div><div><b>식당 키즈체어/예약 재확인</b><small>영업시간과 휴무는 여행 직전에 다시 확인</small></div></div>
+  <div class="stop"><div class="ico">🌦️</div><div><b>날씨 확인 후 수영 날짜 조정</b><small>리조트 일정은 가장 유연하게 움직이기</small></div></div>
+  <div class="stop"><div class="ico">🍼</div><div><b>아기 비상식·물·간식</b><small>렌터카 픽업 직후 첫 장보기 때 확보</small></div></div>
+</div>
+</section>
+
+<section id="travel-details"><h2>🚗 숙소·귀국일 이동 정보</h2><div class="card"><div class="planB"><b>차탄 숙소 주소</b><br>8-4 Minato, Chatan, Nakagami District, Okinawa 904-0114, 일본<br>일본어 주소: 沖縄県中頭郡北谷町字港 8-4<br>현장 셀프 체크인·체크아웃. 체크인 신청 링크는 숙소 안내 확인.<div class="nav"><a href="https://www.google.com/maps/search/?api=1&amp;query=8-4%20Minato%2C%20Chatan%2C%20Nakagami%20District%2C%20Okinawa%20904-0114%2C%20%EC%9D%BC%EB%B3%B8" target="_blank" rel="noopener noreferrer">숙소 주소로 지도 검색</a></div></div><p class="save-note">예약 정보를 확인해 입력하세요. 입력값과 준비물 체크는 이 브라우저에만 저장되며 가족의 다른 기기와 공유되지 않습니다.</p><label class="travel-field">차탄 숙소명<input type="text" data-save="chatan-hotel" placeholder="예약한 숙소명"></label><label class="travel-field">차탄 숙소 지도 링크<input type="url" data-save="chatan-map" value="https://www.google.com/maps/search/?api=1&amp;query=8-4%20Minato%2C%20Chatan%2C%20Nakagami%20District%2C%20Okinawa%20904-0114%2C%20%EC%9D%BC%EB%B3%B8" placeholder="https://www.google.com/maps/…"></label><div class="nav"><a id="chatan-map-link" hidden target="_blank" rel="noopener noreferrer">지도 열기</a></div><label class="travel-field">렌터카 반납 장소<input type="text" data-save="rental-return" value="오달렌터카 나하공항점" placeholder="예약 안내에 적힌 지점명 또는 주소"></label><label class="travel-field">렌터카 반납 장소 지도 링크<input type="url" data-save="rental-map" placeholder="https://www.google.com/maps/…"></label><div class="nav"><a id="rental-map-link" hidden target="_blank" rel="noopener noreferrer">지도 열기</a></div><label class="travel-field">10/13 숙소 출발 예정 시간<input type="time" data-save="departure-time" placeholder=""></label><p class="save-note">반납 예약 10:00 · 항공편 출발 12:50. 숙소 출발 시각은 반납 지점까지의 이동, 주유, 반납 및 셔틀 시간을 확인한 뒤 정하세요.</p><p id="save-status" class="save-note" role="status">이 브라우저에 자동 저장됩니다.</p></div></section>
+<footer>
+Okinawa 2026 · 가족 공유용<br>
+아기 컨디션이 일정표보다 우선 🌿
+</footer>
+
+</main>
+<script>
+(function () {
+  const storageKey = 'okinawa-trip-2026-v1';
+  const fields = [...document.querySelectorAll('[data-save]')];
+  const status = document.getElementById('save-status');
+  let saved = {};
+  try {
+    const value = JSON.parse(localStorage.getItem(storageKey) || '{}');
+    if (value && typeof value === 'object' && !Array.isArray(value)) saved = value;
+  } catch (error) {
+    status.textContent = '저장된 값을 불러올 수 없습니다. 현재 화면에서는 입력과 체크가 가능합니다.';
+  }
+  function refresh() {
+    const checks = fields.filter(field => field.type === 'checkbox');
+    document.getElementById('packing-progress').textContent = `준비 완료 ${checks.filter(field => field.checked).length} / ${checks.length}`;
+    fields.filter(field => field.type === 'url').forEach(field => {
+      const link = document.getElementById(field.dataset.save + '-link');
+      link.hidden = true;
+      link.removeAttribute('href');
+      try {
+        const url = new URL(field.value);
+        if (url.protocol === 'https:' || url.protocol === 'http:') {
+          link.href = url.href;
+          link.hidden = false;
+        }
+      } catch (error) { /* 입력 중이거나 잘못된 주소면 지도 버튼을 숨김. */ }
+    });
+  }
+  fields.forEach(field => {
+    const value = saved[field.dataset.save];
+    if (field.type === 'checkbox') field.checked = value === true;
+    else if (typeof value === 'string') field.value = value;
+    field.addEventListener('input', () => {
+      refresh();
+      const values = Object.fromEntries(fields.map(item => [item.dataset.save, item.type === 'checkbox' ? item.checked : item.value]));
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(values));
+        status.textContent = '이 브라우저에 저장했습니다.';
+      } catch (error) {
+        status.textContent = '브라우저에서 저장을 사용할 수 없습니다. 페이지를 닫으면 입력과 체크가 사라질 수 있습니다.';
+      }
+    });
+  });
+  refresh();
+})();
+</script>
+</body>
+</html>
